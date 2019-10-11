@@ -25,13 +25,13 @@ RUN apt-get update \
 
 COPY binder/condor_config.local /etc/condor/condor_config.local
 COPY binder/entrypoint.sh ${HOME}/.entrypoint.sh
-COPY /tutorials ${HOME}/tutorials
+COPY /tutorials ${HOME}/Examples
 RUN pip install --no-cache-dir htcondor==${HTCONDOR_VERSION}.* nbstripout \
- && nbstripout `find ${HOME}/tutorials -name '*.ipynb'` \
+ && nbstripout `find ${HOME}/Examples -name '*.ipynb'` \
  && chmod +x ${HOME}/.entrypoint.sh \
  && chown -R ${NB_UID} ${HOME}
 
 USER ${NB_USER}
-WORKDIR ${HOME}/tutorials
-ENTRYPOINT ["/home/test/.entrypoint.sh"]
+WORKDIR ${HOME}/Examples
+ENTRYPOINT ["/home/muellerp/.entrypoint.sh"]
 CMD ["jupyter", "lab"]
