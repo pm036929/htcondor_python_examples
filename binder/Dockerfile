@@ -10,7 +10,7 @@
 # limitations under the License.
 
 FROM jupyter/minimal-notebook:latest
-ARG HTCONDOR_VERSION=8.8
+ARG HTCONDOR_VERSION=8.9.3
 
 USER root
 
@@ -27,6 +27,7 @@ COPY binder/condor_config.local /etc/condor/condor_config.local
 COPY binder/entrypoint.sh ${HOME}/.entrypoint.sh
 COPY /Examples ${HOME}/Examples
 RUN pip install --no-cache-dir htcondor==${HTCONDOR_VERSION}.* nbstripout \
+ && pip install plotly \
  && pip install numpy \
  && nbstripout `find ${HOME}/Examples -name '*.ipynb'` \
  && chmod +x ${HOME}/.entrypoint.sh \
