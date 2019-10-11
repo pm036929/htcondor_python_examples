@@ -27,6 +27,7 @@ COPY binder/condor_config.local /etc/condor/condor_config.local
 COPY binder/entrypoint.sh ${HOME}/.entrypoint.sh
 COPY /Examples ${HOME}/Examples
 RUN pip install --no-cache-dir htcondor==${HTCONDOR_VERSION}.* nbstripout \
+ && pip install numpy \
  && nbstripout `find ${HOME}/Examples -name '*.ipynb'` \
  && chmod +x ${HOME}/.entrypoint.sh \
  && chown -R ${NB_UID} ${HOME}
