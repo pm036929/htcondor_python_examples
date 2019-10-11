@@ -1,0 +1,10 @@
+# file submit_file
+universe = vanilla
+executable = /usr/bin/python3 
+log        = $(position)_out.log
+arguments  = "node_exec.py --pos $(position)"
+# error and output are the error and output channels from your job
+# that HTCondor returns from the remote host.
+output = Log/job.out.$(position)
+error = Log/job.error.$(position)
+queue

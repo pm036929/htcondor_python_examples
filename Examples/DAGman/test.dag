@@ -1,0 +1,34 @@
+JOB A submit_file.sub
+VARS A position="11" 
+
+JOB B1 submit_file.sub
+VARS B1 position="12" 
+
+JOB B2 submit_file.sub
+VARS B2 position="21"
+
+JOB C1 submit_file.sub
+VARS C1 position="13" 
+
+JOB C2 submit_file.sub
+VARS C2 position="22"
+
+JOB C3 submit_file.sub
+VARS C3 position="31"
+
+JOB D2 submit_file.sub
+VARS D2 position="23"
+
+JOB D3 submit_file.sub
+VARS D3 position="32"
+
+JOB E3 submit_file.sub
+VARS E3 position="33"
+
+PARENT A CHILD B1 B2
+PARENT B1 CHILD C1
+PARENT B1 B2 CHILD C2
+PARENT B2 CHILD C3
+PARENT C1 C2 CHILD D2
+PARENT C2 C3 CHILD D3
+PARENT D2 D3 CHILD E3
