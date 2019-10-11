@@ -25,7 +25,7 @@ RUN apt-get update \
 
 COPY binder/condor_config.local /etc/condor/condor_config.local
 COPY binder/entrypoint.sh ${HOME}/.entrypoint.sh
-COPY /tutorials ${HOME}/Examples
+COPY /Examples ${HOME}/Examples
 RUN pip install --no-cache-dir htcondor==${HTCONDOR_VERSION}.* nbstripout \
  && nbstripout `find ${HOME}/Examples -name '*.ipynb'` \
  && chmod +x ${HOME}/.entrypoint.sh \
