@@ -31,6 +31,7 @@ RUN pip install --no-cache-dir htcondor==${HTCONDOR_VERSION}.* nbstripout \
  && pip install numpy \
  && conda install "notebook>=5.3" "ipywidgets=7.5"\	
  && conda install jupyterlab=1.0 "ipywidgets=7.5"\
+ && conda install casadi\
  && nbstripout `find ${HOME}/Examples -name '*.ipynb'` \
  && export NODE_OPTIONS=--max-old-space-size=4096\
  && jupyter labextension install @jupyter-widgets/jupyterlab-manager@1.0 --no-build\
